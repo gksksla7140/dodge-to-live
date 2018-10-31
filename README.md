@@ -1,7 +1,7 @@
 # Dodge to Live 
 
 ## Background Overview 
-Dodge to Live is a clone of mobile game called [Tilt To Live](https://itunes.apple.com/us/app/tilt-to-live/id335454448?mt=8). This project is done by using javascript.
+Dodge to Live is a clone of mobile game called [Tilt To Live](https://itunes.apple.com/us/app/tilt-to-live/id335454448?mt=8). This project is done by using javascript and [P5.js](https://p5js.org/).
 
 ## Functionality and MVP Features
 - Setting up canvas with a pointer following a mouse pointer.

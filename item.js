@@ -36,7 +36,7 @@ class Item {
     }
     shape() {
         if (!this.touch) {
-            return  ellipse(this.pos.x, this.pos.y, 10);
+            return  ellipse(this.pos.x, this.pos.y, 20);
         } else {
             return ellipse(this.pos.x, this.pos.y, 60);
         }

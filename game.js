@@ -2,10 +2,13 @@ class Game {
     constructor() {
         
         pointer = new Pointer();
-        this.spawnItem(5);
+        this.spawnItem(3);
         this.spawnRed(10);
         this.iter = 1;
         this.spawnRed = this.spawnRed.bind(this);
+        setInterval(()=> {
+            score += 4
+        }, 1000);
         setInterval(() => {
             iter += 1
             this.spawnRed(10 * iter)
@@ -41,8 +44,9 @@ class Game {
     destroy() {
         redDots.forEach((red,idx)=> {
             items.forEach(item=> {
-                if (item.touch && dist(item.pos.x, item.pos.y, red.pos.x, red.pos.y) <= 60) {
+                if (item.touch && dist(item.pos.x, item.pos.y, red.pos.x, red.pos.y) <= 30) {
                     if (idx !== redDots.length) {
+                        score += 1;
                         redDots =  redDots.slice(0,idx).concat(redDots.slice(idx + 1));
                     } else {
                         redDots.pop();

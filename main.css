@@ -14,12 +14,12 @@ canvas {
     cursor: crosshair;
 }
 
-#score {
+/* #score {
   position: relative;
   top: 30px;
   right: 350px;
   
-}
+} */
 
 #start {
   position: relative;
@@ -27,6 +27,6 @@ canvas {
 }
 #start {
     position: relative;
-    top: 16px;
+    top: -3px;
     right: 359px;
 }

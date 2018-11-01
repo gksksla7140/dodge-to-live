@@ -38,6 +38,20 @@ class Game {
         playing = playing ? false : true;
     }
 
+    destroy() {
+        redDots.forEach((red,idx)=> {
+            items.forEach(item=> {
+                if (item.touch && dist(item.pos.x, item.pos.y, red.pos.x, red.pos.y) <= 60) {
+                    if (idx !== redDots.length) {
+                        redDots =  redDots.slice(0,idx).concat(redDots.slice(idx + 1));
+                    } else {
+                        redDots.pop();
+                    }
+                }
+            })
+        })
+    }
+
     checkCollision(arr) {
         for (let i= 0; i < arr.length; i++) {
             let rx = arr[i].pos.x;
@@ -77,6 +91,7 @@ class Game {
         if (playing) {
             pointer.update();
             pointer.show();
+            this.destroy();
             items.forEach((el) => {
                 el.show();
             })

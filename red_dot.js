@@ -26,6 +26,7 @@ class RedDot {
         return false;
     }
 
+
     update() {
         let nextXPosition = this.pos.x + this.xdir * this.speed;
         let nextYPosition = this.pos.y + this.ydir * this.speed;

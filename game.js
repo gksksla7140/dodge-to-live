@@ -1,26 +1,47 @@
 class Game {
     constructor() {
-
+        
         pointer = new Pointer();
-        this.spawnRed(4);
+        this.spawnItem(5);
+        this.spawnRed(20);
+        this.iter = 1;
+        this.spawnRed = this.spawnRed.bind(this);
+        setInterval(() => {
+            iter += 1
+            this.spawnRed(10 * iter)
+        }, 5000)
     }
 
     gameStatus() {
-        if (this.checkCollision()) {
+        if (this.checkCollision(redDots)) {
             gameover = true;
 
         }
         return false;
 
     }
+    spawnItem(n) {
+        for (let i = 0; i < n; i++) {
+            let x = floor(random(5, 795));
+            let y = floor(random(5, 495));
+            [px, py] = [pointer.pos.x, pointer.pos.y]
+            while (dist(x, y, px, py) < 150) {
+                x = floor(random(5, 795));
+                y = floor(random(5, 495));
+            }
+
+            items.push(new Item(x, y));
+        }
+    }
+
     pause() {
         playing = playing ? false : true;
     }
 
-    checkCollision() {
-        for (let i= 0; i < redDots.length; i++) {
-            let rx = redDots[i].pos.x;
-            let ry = redDots[i].pos.y;
+    checkCollision(arr) {
+        for (let i= 0; i < arr.length; i++) {
+            let rx = arr[i].pos.x;
+            let ry = arr[i].pos.y;
             let px = pointer.pos.x;
             let py = pointer.pos.y;
             if (dist(rx, ry, px, py) <= 10) {
@@ -43,6 +64,12 @@ class Game {
     for (let i = 0; i < n; i++) {
         let x = floor(random(5, 795));
         let y = floor(random(5, 495));
+        [px,py] = [pointer.pos.x, pointer.pos.y]
+        while (dist(x, y, px, py) < 150) {
+             x = floor(random(5, 795));
+             y = floor(random(5, 495));
+        }
+
         redDots.push(new RedDot(x, y, 3));
     }
 }
@@ -50,6 +77,9 @@ class Game {
         if (playing) {
             pointer.update();
             pointer.show();
+            // items.forEach(el => {
+            //     el.show();
+            // })
             redDots.forEach(red => {
                 red.update();
                 red.show();

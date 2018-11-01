@@ -1,6 +1,7 @@
 let pointer;
 let rez = 20;
 let redDots=[];
+let items = [];
 let w;
 let h;
 let px;
@@ -10,19 +11,20 @@ let playing= true;
 let pause;
 let start;
 let gameover = false;
-
+let iter = 1;
 
 function setup() {
+    
+    start = createButton('start');
+    start.id('start');
+    start.mousePressed(startGame);
     let scoreElem = createDiv('score = 0');
     scoreElem.style('color', 'black');
     scoreElem.id('score');
-    
      createCanvas(800, 500);
     w = floor(width / rez);
     h = floor(height / rez);
     frameRate(100);
-     start = createButton('start');
-    start.mousePressed(startGame);
 }
 
 function startGame() {
@@ -34,6 +36,8 @@ function startGame() {
     button.mousePressed(resetGame);
 
 }
+
+
 
 
 

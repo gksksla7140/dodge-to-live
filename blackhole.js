@@ -1,13 +1,13 @@
-class Item {
-    constructor(x,y) {
-        this.pos =  createVector(x,y);   
+class blackhole {
+    constructor(x, y) {
+        this.pos = createVector(x, y);
         this.touch = false;
 
     }
     checkCollision() {
         if (this.distance() <= 15 && this.touch === false) {
             this.touch = true;
-            setTimeout(()=> {
+            setTimeout(() => {
                 this.resetPos();
                 this.touch = false;
             }, 1000)
@@ -22,8 +22,8 @@ class Item {
             x = floor(random(5, 795));
             y = floor(random(5, 495));
         }
-        this.pos = createVector(x,y);
-        
+        this.pos = createVector(x, y);
+
     }
 
 
@@ -32,11 +32,11 @@ class Item {
         let y2 = pointer.pos.y;
         let x = this.pos.x;
         let y = this.pos.y;
-        return dist(x2,y2, x, y)
+        return dist(x2, y2, x, y)
     }
     shape() {
         if (!this.touch) {
-            return  image(img, this.pos.x, this.pos.y);
+            return ellipse(this.pos.x, this.pos.y, 20);
         } else {
             return ellipse(this.pos.x, this.pos.y, 60);
         }

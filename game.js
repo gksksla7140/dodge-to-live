@@ -3,16 +3,16 @@ class Game {
         
         pointer = new Pointer();
         this.spawnItem(3);
-        this.spawnRed(10);
+        // this.spawnRed(10);
         this.iter = 1;
         this.spawnRed = this.spawnRed.bind(this);
         setInterval(()=> {
             score += 4
         }, 1000);
-        setInterval(() => {
-            iter += 1
-            this.spawnRed(10 * iter)
-        }, 5000)
+        // setInterval(() => {
+        //     iter += 1
+        //     this.spawnRed(10 * iter)
+        // }, 5000)
     }
 
     gameStatus() {
@@ -95,14 +95,14 @@ class Game {
         if (playing) {
             pointer.update();
             pointer.show();
-            this.destroy();
+            // this.destroy();
             items.forEach((el) => {
                 el.show();
             })
-            redDots.forEach(red => {
-                red.update();
-                red.show();
-            })
+            // redDots.forEach(red => {
+            //     red.update();
+            //     red.show();
+            // })
             this.gameStatus();
         } else {
             pointer.show();

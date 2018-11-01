@@ -13,14 +13,14 @@ let start;
 let gameover = false;
 let iter = 1;
 let score = 0;
+let img;
 
 function setup() {
     start = createButton('start');
+    img = loadImage('asset/nuclear.png');
+    
     start.id('start');
     start.mousePressed(startGame);
-    // let scoreElem = createDiv(`score: ${score}`);
-    // scoreElem.style('color', 'black');
-    // scoreElem.id('score');
      createCanvas(w, h);
     frameRate(100);
 }

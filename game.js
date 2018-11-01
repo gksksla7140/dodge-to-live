@@ -3,7 +3,7 @@ class Game {
         
         pointer = new Pointer();
         this.spawnItem(5);
-        this.spawnRed(20);
+        this.spawnRed(10);
         this.iter = 1;
         this.spawnRed = this.spawnRed.bind(this);
         setInterval(() => {
@@ -77,9 +77,9 @@ class Game {
         if (playing) {
             pointer.update();
             pointer.show();
-            // items.forEach(el => {
-            //     el.show();
-            // })
+            items.forEach((el) => {
+                el.show();
+            })
             redDots.forEach(red => {
                 red.update();
                 red.show();

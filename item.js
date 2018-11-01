@@ -4,6 +4,29 @@ class Item {
         this.touch = false;
 
     }
+    checkCollision() {
+        if (this.distance() <= 15 && this.touch === false) {
+            this.touch = true;
+            setTimeout(()=> {
+                this.resetPos();
+                this.touch = false;
+            }, 1000)
+        }
+    }
+
+    resetPos() {
+        let x = floor(random(5, 795));
+        let y = floor(random(5, 495));
+        [px, py] = [pointer.pos.x, pointer.pos.y]
+        while (dist(x, y, px, py) < 150) {
+            x = floor(random(5, 795));
+            y = floor(random(5, 495));
+        }
+        this.pos = createVector(x,y);
+        
+    }
+
+
     distance() {
         let x2 = pointer.pos.x;
         let y2 = pointer.pos.y;
@@ -15,10 +38,8 @@ class Item {
         if (!this.touch) {
             return  ellipse(this.pos.x, this.pos.y, 10);
         } else {
-            return ellipse(this.pos.x, this.pos.y, 10);
+            return ellipse(this.pos.x, this.pos.y, 60);
         }
-
-
     }
     color() {
         return fill('#e59f12');
@@ -26,6 +47,7 @@ class Item {
 
 
     show() {
+        this.checkCollision();
         this.color();
         this.shape();
 

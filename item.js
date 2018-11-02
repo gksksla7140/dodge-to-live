@@ -36,7 +36,7 @@ class Item {
     }
     shape() {
         if (!this.touch) {
-            return  image(img, this.pos.x, this.pos.y);
+            return ellipse(this.pos.x, this.pos.y, 20);
         } else {
             return ellipse(this.pos.x, this.pos.y, 60);
         }
@@ -50,6 +50,7 @@ class Item {
         this.checkCollision();
         this.color();
         this.shape();
+        background(img);
 
     }
 }

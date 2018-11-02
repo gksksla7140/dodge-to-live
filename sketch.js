@@ -15,13 +15,16 @@ let iter = 1;
 let score = 0;
 let img;
 
+function preload() {
+ img = loadImage("./asset/nuclear.png");
+}
+
 function setup() {
     start = createButton('start');
-    img = loadImage('asset/nuclear.png');
     
     start.id('start');
     start.mousePressed(startGame);
-     createCanvas(w, h);
+    createCanvas(w, h);
     frameRate(100);
 }
 

@@ -1,17 +1,23 @@
 body {
   margin: 0;
   display: flex;
+  background-image: url('asset/background.jpg');
   flex-direction: column;
-
+  
   /* This centers our sketch horizontally. */
   justify-content: center;
-
+  
   /* This centers our sketch vertically. */
   align-items: center;
 }
+.title {
+  color: white;
+  font-size: 50px;
+   font-family: monospace;
+}
 
 canvas {
-    cursor: crosshair;
+  cursor: crosshair;
 }
 
 /* #score {
@@ -21,12 +27,34 @@ canvas {
   
 } */
 
-#start {
-  position: relative;
 
-}
 #start {
     position: relative;
-    top: -3px;
+    bottom: 5px;
     right: 359px;
+    background-color: #81f99d;
+    width: 80px;
+    height: 30px;
+    padding: 10px;
+    color:white;
+    padding: 5px;
+    border-radius: 4px;
+}
+#start:hover {
+  background-color: #45bc53;
+}
+#pause {
+    position: relative;
+    top: 5px;
+    right: 359px;
+    background-color: red;
+    width: 80px;
+    height: 30px;
+    padding: 10px;
+    color:white;
+    padding: 5px;
+    border-radius: 4px;
+}
+#pause:hover {
+  background-color: lightcoral;
 }

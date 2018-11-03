@@ -50,7 +50,7 @@ class Item {
         this.checkCollision();
         this.color();
         this.shape();
-        background(img);
+
 
     }
 }

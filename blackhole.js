@@ -1,16 +1,17 @@
-class blackhole {
-    constructor(x, y) {
-        this.pos = createVector(x, y);
+class BlackHole {
+    constructor() {
+        this.pos;
         this.touch = false;
+        this.active = true;
 
     }
     checkCollision() {
         if (this.distance() <= 15 && this.touch === false) {
             this.touch = true;
+            this.active = false;
             setTimeout(() => {
-                this.resetPos();
-                this.touch = false;
-            }, 1000)
+                blackhole = null;
+            }, 1000);
         }
     }
 
@@ -38,11 +39,11 @@ class blackhole {
         if (!this.touch) {
             return ellipse(this.pos.x, this.pos.y, 20);
         } else {
-            return ellipse(this.pos.x, this.pos.y, 60);
+            return ellipse(this.pos.x, this.pos.y, 400);
         }
     }
     color() {
-        return fill('#e59f12');
+        return fill('black');
     }
 
 

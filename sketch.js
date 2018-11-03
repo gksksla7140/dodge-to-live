@@ -14,41 +14,50 @@ let gameover = false;
 let iter = 1;
 let score = 0;
 let img;
+let blackhole;
+let count = 0;
 
 function preload() {
- img = loadImage("./asset/nuclear.png");
+ img = loadImage("./asset/nuclear.jpg");
 }
 
 function setup() {
     start = createButton('start');
-    
     start.id('start');
     start.mousePressed(startGame);
     createCanvas(w, h);
     frameRate(100);
 }
+function keyPressed() {
+
+    if (start && key === ' ') {
+        startGame();
+    }
+    else if (key === ' ') {
+        game.pause();
+    }
+}
 
 function startGame() {
-    start.remove();
-    game = new Game;
-    const pause = createButton('pause');
-    pause.mousePressed(game.pause);
-    const button = createButton('reset');
-    button.mousePressed(resetGame);
+    if (start ) {
+        start = false;
+        game = new Game;
+        const pause = createButton('pause');
+        pause.id('pause')
+        pause.mousePressed(game.pause);
+        // const button = createButton('reset');
+        // button.mousePressed(resetGame);
+    }
 
 }
 
-
-
-
-
-function resetGame() {
-    score=0;
-    gameover = false;
-    redDots=[];
-    playing = true;
-    game = new Game;
-}
+// function resetGame() {
+//     score=0;
+//     gameover = false;
+//     redDots=[];
+//     playing = true;
+//     game = new Game;
+// }
 
 
 function mouseMoved() {
@@ -63,7 +72,7 @@ function mouseClicked() {
 }
 
 function draw() {
-    background(220);
+    background(255);
     text(`score: ${score}`, 10, 20);
     textSize(20);
     textStyle(BOLD);

@@ -3,16 +3,19 @@ class Game {
         
         pointer = new Pointer();
         this.spawnItem(3);
-        // this.spawnRed(10);
+        this.spawnRed(10);
         this.iter = 1;
         this.spawnRed = this.spawnRed.bind(this);
         setInterval(()=> {
             score += 4
         }, 1000);
-        // setInterval(() => {
-        //     iter += 1
-        //     this.spawnRed(10 * iter)
-        // }, 5000)
+        setInterval(() => {
+            if (iter <= 6){
+
+                iter += 1 
+            }
+            this.spawnRed(5 * iter);
+        }, 5000)
     }
 
     gameStatus() {
@@ -23,6 +26,15 @@ class Game {
         return false;
 
     }
+    spawnBlackhole() {
+        if ( count !== 0 && count % 20 === 0 && !blackhole) {
+            blackhole = new BlackHole;
+            blackhole.resetPos();
+
+        }
+
+    }
+
     spawnItem(n) {
         for (let i = 0; i < n; i++) {
             let x = floor(random(5, 795));
@@ -47,13 +59,25 @@ class Game {
                 if (item.touch && dist(item.pos.x, item.pos.y, red.pos.x, red.pos.y) <= 30) {
                     if (idx !== redDots.length) {
                         score += 1;
+                        count += 1;
                         redDots =  redDots.slice(0,idx).concat(redDots.slice(idx + 1));
                     } else {
                         redDots.pop();
                     }
                 }
             })
+        });
+        redDots.forEach((red,idx)=> {
+            if (blackhole && blackhole.touch && dist(red.pos.x, red.pos.y, blackhole.pos.x, blackhole.pos.y) <= 200) {
+                if (idx !== redDots.length) {
+                    score += 1;
+                    redDots = redDots.slice(0, idx).concat(redDots.slice(idx + 1));
+                } else {
+                    redDots.pop();
+                }
+            }
         })
+
     }
 
     checkCollision(arr) {
@@ -71,12 +95,6 @@ class Game {
 
     mouseMoved() {
         pointer.setDir(pmouseX, pmouseY)
-        px = pointer.pos.x;
-        py = pointer.pos.y;
-        redDots.forEach(el => {
-            el.setDir(px, py);
-        })
-
     }
      spawnRed(n) {
     for (let i = 0; i < n; i++) {
@@ -87,22 +105,35 @@ class Game {
              x = floor(random(5, 795));
              y = floor(random(5, 495));
         }
+        if (count < 30 ) {
+            redDots.push(new RedDot(x, y, 3));
+        } else if (count < 50) {
+            redDots.push(new RedDot(x, y, 4));
+        } else {
+            redDots.push(new RedDot(x, y, 5));
+        }
 
-        redDots.push(new RedDot(x, y, 3));
-    }
+        }
 }
     draw() {
         if (playing) {
             pointer.update();
             pointer.show();
-            // this.destroy();
+            this.destroy();
+            this.spawnBlackhole();
+
+
+            if (blackhole) {
+                blackhole.show();
+            }
             items.forEach((el) => {
                 el.show();
+            });
+            redDots.forEach(red => {
+                red.setDir(pointer.pos.x, pointer.pos.y);
+                red.update();
+                red.show();
             })
-            // redDots.forEach(red => {
-            //     red.update();
-            //     red.show();
-            // })
             this.gameStatus();
         } else {
             pointer.show();

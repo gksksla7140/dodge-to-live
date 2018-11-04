@@ -1,7 +1,7 @@
 body {
   margin: 0;
   display: flex;
-  background-image: url('asset/background.jpg');
+  background-image: url('../asset/background.jpg');
   flex-direction: column;
   color: white;
   

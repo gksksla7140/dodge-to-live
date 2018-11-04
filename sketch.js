@@ -73,9 +73,10 @@ function mouseClicked() {
 
 function draw() {
     background(255);
-    text(`score: ${score}`, 10, 20);
+    text(`destroyed: ${count}`,10,20);
     textSize(20);
     textStyle(BOLD);
+    text(`score: ${score}`, 10, 40);
     if (gameover) {
         alert("Do you want to play again?");
         window.location.reload();

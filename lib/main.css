@@ -3,7 +3,9 @@ body {
   display: flex;
   background-image: url('../asset/background.jpg');
   flex-direction: column;
+  justify-content: center;
   color: white;
+  height: 1000px;
   
   /* This centers our sketch horizontally. */
   justify-content: center;
@@ -15,6 +17,7 @@ body {
   color: white;
   font-size: 80px;
    font-family: monospace;
+   margin: 0;
 }
 
 canvas {

@@ -3,21 +3,21 @@ body {
   display: flex;
   background-image: url('../asset/background.jpg');
   flex-direction: column;
-  justify-content: center;
+   justify-content: flex-start;  
   color: white;
   height: 1000px;
   
-  /* This centers our sketch horizontally. */
-  justify-content: center;
+
+
   
-  /* This centers our sketch vertically. */
+
   align-items: center;
 }
 .title {
   color: white;
   font-size: 80px;
    font-family: monospace;
-   margin: 0;
+   margin-top: 10px;
 }
 
 canvas {
@@ -30,7 +30,7 @@ canvas {
 }
 
 .direction li {
-  margin: 10px;
+  /* margin: 10px; */
   font-size: 25px;
 }
 
@@ -43,7 +43,8 @@ canvas {
 
 
 #start {
-    position: relative;
+  display: none;
+    /* position: relative;
     bottom: 5px;
     right: 359px;
     background-color: #81f99d;
@@ -52,13 +53,14 @@ canvas {
     padding: 10px;
     color:white;
     padding: 5px;
-    border-radius: 4px;
+    border-radius: 4px; */
 }
 #start:hover {
   background-color: #45bc53;
 }
 #pause {
-    position: relative;
+  display: none;
+    /* position: relative;
     top: 5px;
     right: 359px;
     background-color: red;
@@ -67,7 +69,7 @@ canvas {
     padding: 10px;
     color:white;
     padding: 5px;
-    border-radius: 4px;
+    border-radius: 4px; */
 }
 #pause:hover {
   background-color: lightcoral;
